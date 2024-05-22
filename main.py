@@ -80,6 +80,12 @@ def main():
             length = int(input("Введите длину пароля: "))
             new_password = generate_password(length)
             print(f"Сгенерированный пароль: {new_password}")
+            save_choice = input("Хотите сохранить этот пароль? (да/нет): ").strip().lower()
+            if save_choice == 'да':
+                site = input("Введите название сайта/сервиса: ")
+                encrypted_password = encrypt_password(new_password, key)
+                save_password(site, encrypted_password)
+                print("Пароль сохранен.")
         
         elif choice == '2':
             site = input("Введите название сайта/сервиса: ")
